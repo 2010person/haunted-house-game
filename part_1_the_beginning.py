@@ -11,9 +11,8 @@ try:
     A - Europe
     B - Asia
     C - North America""",
-    pass]
-    items = [["Key of Loathing", "living_room", 
-              "I have hidden one of the 10 keys in this room: in a place where education is gained", False]]
+    "I have hidden one of the 10 keys in this room: in a place where education is gained"]
+    items = [["Key of Loathing", "living_room", False]]
     def intro(): # The games introduction function
         print("Welcome to the Temple of Doom.")
         name = input("Please enter your Horror Games People ID username")
