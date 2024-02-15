@@ -3,6 +3,8 @@ import part_1_the_beginning as p1 # Imported the part 1 python file as "p1"
 try: 
     p1.intro() # Called the intro() function from the part 1 python file
     print("As this game is still in development, you have reached the END.")
+    def drop_keys():
+        pass
                 
 except:
     print("I apolgize, but there has been an error in the game...")
