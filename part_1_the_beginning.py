@@ -4,10 +4,10 @@ try:
     room = ""
     house = [["entrance_room", "The entrance room is damp, smells of wet wood, with a singular candle hung in the far corner.", True, False], # Defining the rooms, the description, whether it is lit, and whether it is locked 
             ["living_room", "In the living room, there is a fossilised sofa, and intricate designs have been created by cobwebs.", False, True],
-            ["kitchen", "In the kitchen, there's ancient pizza on the counter, poisoning the room, with its rotten stentch.", False, True],
+            ["kitchen", "In the kitchen, there's ancient pizza on the counter, poisoning the room with its rotten stentch.", False, True],
             "parlour", "dining hall", "cellar"] 
     puzzles = ["""There is a message by the door saying:
-    Where my hatred burned (literally), in my living room (the door to the north), if you dare, attached is the key
+    Go where my hatred burned (literally), in my living room (the door to the north), if you dare, attached is the key
     To recieve light in the living room, solve answer this question:
     In which continent were the Napoleonic Wars fought in?
     A - Europe
@@ -20,6 +20,7 @@ Which country did Admiral Nelson fight for?
     C - The (at that time known as) First French Empire"""]
     items = [["Key of Loathing", "living_room", False]]
     def intro(): # The games introduction function
+        global name
         print("Welcome to the Temple of Doom.")
         name = input("Please enter your Horror Games People ID username")
         if name == "omegabetaalphagammaraY": # Secret admin code, in case you need to skip levels
@@ -101,7 +102,7 @@ Please choose the one you think it is:
     0(Default) -  Next to the window 
     1 - In the hole in the wall
     2 - In the bookcase""")
-                if option == "1":
+                if option == "2":
                     print("Yes, you've found it!")
                     break
                 else:
@@ -125,7 +126,7 @@ Please choose the one you think it is:
             level_2()
 
     def level_2():
-        global house, puzzles, items, room # Allowing the function to access the global variables
+        global house, puzzles, items, room, name # Allowing the function to access the global variables
         room = "kitchen"
         if house[2][2] == False:
             option = input("""Aargh! There's no light, it's too dark!!! What should you do?:
@@ -138,7 +139,11 @@ Please choose the one you think it is:
                 print("Phew, let's go back to the living room and start from there again, because I lost the key!")
                 level_1()
         else:
-            print[2][1]
+            print(house[2][1])
+            print("Carrying items UNLOCKED.")
+            print(name, """you have now unlocked the ability to carry items. 
+Whenever you have to enter something, entering 'item' will allow you to review the items you are carrying, and whether you want to drop them.""")
+            
 
 except:
     print("I apolgize, but there has been an error in the game...")
