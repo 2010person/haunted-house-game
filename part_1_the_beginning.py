@@ -1,5 +1,6 @@
 import sys # Default module, so you should have it, unless it was deleted 
-import admin_command as ad #Imports the admin command python code as "ad"
+import admin_command as ad # Imports the admin command python code as "ad"
+import main as m
 try:
     room = ""
     house = [["entrance_room", "The entrance room is damp, smells of wet wood, with a singular candle hung in the far corner.", True, False], # Defining the rooms, the description, whether it is lit, and whether it is locked 
@@ -13,12 +14,15 @@ try:
     A - Europe
     B - Asia
     C - North America""",
-    """To recieve light in the kitchen answer this question:
-Which country did Admiral Nelson fight for?
-    A(Default) - The United States of America
-    B - The (at that time known as) United Kingdom of Great Britain and Ireland
-    C - The (at that time known as) First French Empire"""]
-    items = [["Key of Loathing", "living_room", False]]
+    """The key is wrapped in a message saying:
+    Go forth, into the kitchen, and find the Key of Freedom in the heater of baguettes (if you dare), enclosed is the Key of Loathing
+    To recieve light in the kitchen answer this question
+    Which country did Admiral Nelson fight for?
+        A(Default) - The United States of America
+        B - The (at that time known as) United Kingdom of Great Britain and Ireland
+        C - The (at that time known as) First French Empire"""]
+    items = [["Key of Loathing", "living_room", False],
+             ["Key of Freedom", "kitchen", False]]
     def intro(): # The games introduction function
         global name
         print("Welcome to the Temple of Doom.")
@@ -36,7 +40,7 @@ Which country did Admiral Nelson fight for?
     1 - I'm too scared, hire someone else, I am not opening that door""")
         if option == "1":
             print("""GAME OVER!
-                    I mean, you can't really play without entering the temple!""")
+I mean, you can't really play without entering the temple!""")
             sys.exit(1)
         else:
             print("You have opened the rickety door, prepare to be immersed in a new world!")
@@ -59,7 +63,7 @@ Which country did Admiral Nelson fight for?
     Nope! You are wrong try again!""")
             elif option == "1":
                 print("""A message has appeared:
-    You are correct! Progress if you dare!""")
+You are correct! Progress if you dare!""")
                 house[1][2] = True
                 break
             else:
@@ -107,6 +111,19 @@ Please choose the one you think it is:
                     break
                 else:
                     print("Nope, not here, please try again!")
+            print("""The message says:'In this room, I have hidden the Key of Loathing, you need this to open the next door.
+It is in a place where education is gained.'""")
+            while 0==0:
+                option = input("""I have narrowed down the location of the Key of Loathing to three places
+Please choose the one you think it is:
+    0(Default) -  Next to the window 
+    1 - In the hole in the wall
+    2 - In the bookcase""")
+                if option == "2":
+                    print("Yes, you've found it!")
+                    break
+                else:
+                    print("Nope, not here, please try again!")
             print("Alright it was wrapped in a message which says:")
             print(puzzles[1])
             while 0==0:
@@ -123,6 +140,7 @@ Please choose the one you think it is:
                     print("Nope, that's wrong, we better try again.")
                 else:
                     print("Alright into the darkness we go.")
+                    break
             level_2()
 
     def level_2():
@@ -143,6 +161,20 @@ Please choose the one you think it is:
             print("Carrying items UNLOCKED.")
             print(name, """you have now unlocked the ability to carry items. 
 Whenever you have to enter something, entering 'item' will allow you to review the items you are carrying, and whether you want to drop them.""")
+            while 0==0:
+                option = input("""I have narrowed down the location of the Key of Freedom to three places
+Please choose the one you think it is:
+    0 -  Inside the dusty toaster 
+    1(Default) - Inside the ashes of the oven
+    2 - In the sink""")
+                if option == "0":
+                    print("Yes, you've found it!")
+                    break
+                elif option == "item":
+                    m.review_keys()
+                else:
+                    print("Nope, not here, please try again!")
+            
             
 
 except:
