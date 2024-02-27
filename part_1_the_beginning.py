@@ -1,15 +1,15 @@
 import sys # Default module, so you should have it, unless it was deleted 
 import admin_command as ad # Imports the admin command python code as "ad"
 from art import *
-from openai import OpenAI
+#from openai import OpenAI
 
 #try:
-client = OpenAI()
+#client = OpenAI()
 room = ""
 house = [["entrance_room", "The entrance room is damp, smells of wet wood, with a singular candle hung in the far corner.", True, False], # Defining the rooms, the description, whether it is lit, and whether it is locked 
         ["living_room", "In the living room, there is a fossilised sofa, and intricate designs have been created by cobwebs.", False, True],
         ["kitchen", "In the kitchen, there's ancient pizza on the counter, poisoning the room with its rotten stentch.", False, True],
-        "parlour", "dining hall", "cellar"] 
+        ["parlour", "In the parlour, "], "dining hall", "cellar"] 
 puzzles = ["""There is a message by the door saying:
 Go where my hatred burned (literally), in my living room (the door to the north), if you dare, attached is the key
 To recieve light in the living room, solve answer this question:
@@ -26,13 +26,13 @@ Which country did Admiral Nelson fight for?
     C - The (at that time known as) First French Empire"""]
 items = [["Key of Loathing", "living_room", False],
             ["Key of Freedom", "kitchen", False]]
-def computer_voice(speech):
-    reply = client.audio.speech.create(
-        model="tts-1",
-        voice="nova",
-        input=speech,
-    )
-    reply.stream_to_file("assets/comp_voice.mp3")
+#def computer_voice(speech):
+ #   reply = client.audio.speech.create(
+  #      model="tts-1",
+   #     voice="nova",
+    #    input=speech,
+    #)
+    #reply.stream_to_file("assets/comp_voice.mp3")
 def review_keys():
     global room, items
     num = 0
@@ -72,7 +72,7 @@ def intro(): # The games introduction function
     else:
         pass
     print("This game is presented by the Horror Games People Industries!")
-    computer_voice("This game is presented by the Horror Games People Industries!")
+    #computer_voice("This game is presented by the Horror Games People Industries!")
     print("© Copyright Horror Games People Industries")
     print("Starting game...")
     print("Hello", name, "immerse yourself in the Temple of Doom, i.e. a temple found buried under London, that the British Government wants you to explore.")
@@ -163,11 +163,11 @@ Please choose the one you think it is:
 1 - Select Option A
 2 - Select Option B
 3 - Select Option C""")
-            if option == "1":
+            if option == "2":
                 print("Well done, we got it right, let's go through to the kitchen.")
                 house[2][2] = True
                 break
-            elif option == "2" or option == "3":
+            elif option == "1" or option == "3":
                 print("Nope, that's wrong, we better try again.")
             else:
                 print("Alright into the darkness we go.")
@@ -206,7 +206,21 @@ Please choose the one you think it is:
             else:
                 print("Nope, not here, please try again!")
             
-            
+def level_3():
+    global house, puzzles, items, room, name # Allowing the function to access the global variables
+    room = "parlour"
+    if house[3][2] == False:
+        option = input("""Aargh! There's no light, it's too dark!!! What should you do?:
+0(default) - Return to the living room.
+1 - Wait in the darkness for something to come and kill us""")
+        if option == "1":
+            print("GAME OVER! I could have told you how you died, but it TOO DARK!!!")
+            sys.exit(1)
+        else:
+            print("Phew, let's go back to the kitchen and start from there again, because I lost the key!")
+            level_2()
+    else:
+        print(house[3][1])
 
 #except:
  #   print("I apolgize, but there has been an error in the game...")
