@@ -20,7 +20,14 @@ To recieve light in the kitchen answer this question
 Which country did Admiral Nelson fight for?
     A(Default) - The United States of America
     B - The (at that time known as) United Kingdom of Great Britain and Ireland
-    C - The (at that time known as) First French Empire""",]
+    C - The (at that time known as) First French Empire""",
+"""The key is wrapped in a message saying:
+Go forth, into the parlour, and find the Key of Revenge on the place which is a versatile piece of furniture, designed for comfort and support (if you dare), enclosed is the Key of Freedom
+To recieve light in the parlour answer this question
+During Napoleon Bonaparte's rise to power in France, which significant event solidified his authority and established him as the dominant figure in French politics?
+    A(Default) - The Napoleonic Wars
+    B - The Reign of Terror
+    C -  The Coup of 18 Brumaire""]
 items = [["Key of Loathing", "living_room", False],
             ["Key of Freedom", "kitchen", False]]
 def review_keys():
@@ -217,7 +224,23 @@ Please choose the one you think it is:
                 review_keys()
             else:
                 print("Nope, not here, please try again!")
-        print(puzzles[1])
+        print(puzzles[2])
+        while 0==0:
+            option = input("""Chosee what to do:
+0(Default) - Enter the kitchen without light
+1 - Select Option A
+2 - Select Option B
+3 - Select Option C""")
+            if option == "3":
+                print("Well done, we got it right, let's go through to the kitchen.")
+                house[2][2] = True
+                break
+            elif option == "1" or option == "2":
+                print("Nope, that's wrong, we better try again.")
+            else:
+                print("Alright into the darkness we go.")
+                break
+        level_3()
 
     
 def level_3():

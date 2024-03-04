@@ -21,6 +21,9 @@ WARNING!!! Not entering an integer will result in the game being terminated, due
                 elif ad_level == 2:
                     p1.level_2()
                     break
+                elif ad_level == 3:
+                    p1.level_3()
+                    break
                 else:
                     print("That isn't a valid level try again!")
             else:
