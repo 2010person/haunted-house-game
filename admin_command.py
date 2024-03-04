@@ -3,6 +3,8 @@ import part_1_the_beginning as p1
 try:
     def admin():
         print("Greeting, admin, you have unlocked admin mode!")
+        print("At every puzzle for light in part 1 typing 'admin' will allow you to access admin mode.")
+        p1.admin = True
         while 0==0:
             ad_level = int(input("""Which level do you wish to skip to (the doors and torches will be unlocked for you)?
 WARNING!!! Not entering an integer will result in the game being terminated, due to an error """))
@@ -23,6 +25,9 @@ WARNING!!! Not entering an integer will result in the game being terminated, due
                     break
                 elif ad_level == 3:
                     p1.level_3()
+                    break
+                elif ad_level == 4:
+                    p1.level_4()
                     break
                 else:
                     print("That isn't a valid level try again!")

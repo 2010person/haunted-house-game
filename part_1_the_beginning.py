@@ -1,12 +1,28 @@
 import sys # Default module, so you should have it, unless it was deleted 
 import admin_command as ad # Imports the admin command python code as "ad"
+import tkinter as tk
+from tkinter import PhotoImage
 
 #try:
+class Window:
+    def __init__(self, image):
+        self.image = image
+        self.root = tk.Tk()
+        self.widgets()
+        self.root.mainloop()
+    def widgets(self):
+        self.img = PhotoImage(file=self.image)
+        label = tk.Label(self.root, image=self.img)
+        label.pack()
+
+admin = False
 room = ""
 house = [["entrance_room", "The entrance room is damp, smells of wet wood, with a singular candle hung in the far corner.", True, False], # Defining the rooms, the description, whether it is lit, and whether it is locked 
         ["living_room", "In the living room, there is a fossilised sofa, and intricate designs have been created by cobwebs.", False, True],
         ["kitchen", "In the kitchen, there's ancient pizza on the counter, poisoning the room with its rotten stentch.", False, True],
-        "parlour", "dining hall", "cellar"] 
+        ["parlour", "The abandoned French parlour, frozen in time for three centuries, retains its opulent furnishings and fading grandeur, echoing whispers of bygone elegance amidst layers of dust and cobwebs.",
+          False, True],
+          "dining hall", "cellar"] 
 puzzles = ["""There is a message by the door saying:
 Go where my hatred burned (literally), in my living room (the door to the north), if you dare, attached is the key
 To recieve light in the living room, solve answer this question:
@@ -16,7 +32,7 @@ B - Asia
 C - North America""",
 """The key is wrapped in a message saying:
 Go forth, into the kitchen, and find the Key of Freedom in the heater of baguettes (if you dare), enclosed is the Key of Loathing
-To recieve light in the kitchen answer this question
+To recieve light in the kitchen answer this question:
 Which country did Admiral Nelson fight for?
     A(Default) - The United States of America
     B - The (at that time known as) United Kingdom of Great Britain and Ireland
@@ -27,9 +43,18 @@ To recieve light in the parlour answer this question
 During Napoleon Bonaparte's rise to power in France, which significant event solidified his authority and established him as the dominant figure in French politics?
     A(Default) - The Napoleonic Wars
     B - The Reign of Terror
-    C -  The Coup of 18 Brumaire""]
+    C -  The Coup of 18 Brumaire""",
+"""The key is wrapped in a message saying:
+Go forth, into the attic, and find the Key of Deliverance on the place which n a place where whispers of history is stitched in threads and its shadows hint at tales (if you dare), enclosed is the Key of Revenge
+To recieve light in the attic answer this question:
+What was the primary motivation behind Napoleon's decision to invade Russia in 1812?
+    A(Default) - To enforce the Continental System and cripple British trade.
+    B - To spread the ideals of the French Revolution across Europe.
+    C -  To punish Russia for withdrawing from the Continental System."""]
 items = [["Key of Loathing", "living_room", False],
-            ["Key of Freedom", "kitchen", False]]
+        ["Key of Freedom", "kitchen", False],
+        ["Key of Revenge", "parlour", False],
+        ["Key of Deliverance", "attic", False]]
 def review_keys():
     global room, items
     num = 0
@@ -69,7 +94,8 @@ def intro(): # The games introduction function
     else:
         pass
     print("This game is presented by the Horror Games People Industries!")
-    print("© Copyright Horror Games People Industries")
+    print("Certain elements of this game like images and descriptions, have been produced through AI models belonging to OpenAI.")
+    print("2024 © Copyright Horror Games People Industries")
     print("Starting game...")
     print("Hello", name, "immerse yourself in the Temple of Doom, i.e. a temple found buried under London, that the British Government wants you to explore.")
     option = input("""Please choose what to do:
@@ -130,6 +156,12 @@ Nope! You are wrong try again!""")
 You are correct! Progress if you dare!""")
             house[1][2] = True
             break
+        elif option == "admin":
+            if admin == True:
+                ad.admin()
+            else:
+                print("Alright into the darkness we go.")
+            break
         else:
             print("Onwards we go into complete darkness!")
             break
@@ -172,9 +204,11 @@ Please choose the one you think it is:
 2 - In the bookcase""")
             if option == "2":
                 print("Yes, you've found it!")
+                items[0][2] = True
                 break
             else:
                 print("Nope, not here, please try again!")
+        house[2][3] = False
         print(puzzles[1])
         while 0==0:
             option = input("""Chosee what to do:
@@ -188,6 +222,12 @@ Please choose the one you think it is:
                 break
             elif option == "2" or option == "3":
                 print("Nope, that's wrong, we better try again.")
+            elif option == "admin":
+                if admin == True:
+                    ad.admin()
+                else:
+                    print("Alright into the darkness we go.")
+                break
             else:
                 print("Alright into the darkness we go.")
                 break
@@ -204,7 +244,7 @@ def level_2():
             print("GAME OVER! I could have told you how you died, but it TOO DARK!!!")
             sys.exit(1)
         else:
-            print("Phew, let's go back to the living room and start from there again, because I lost the key!")
+            print("Phew, let's go back to the living room and restart the level!")
             level_1()
     else:
         print(house[2][1])
@@ -219,11 +259,13 @@ Please choose the one you think it is:
 2 - In the sink""")
             if option == "0":
                 print("Yes, you've found it!")
+                items[1][2] = True
                 break
             elif option == "item":
                 review_keys()
             else:
                 print("Nope, not here, please try again!")
+        house[3][3] = False
         print(puzzles[2])
         while 0==0:
             option = input("""Chosee what to do:
@@ -232,11 +274,19 @@ Please choose the one you think it is:
 2 - Select Option B
 3 - Select Option C""")
             if option == "3":
-                print("Well done, we got it right, let's go through to the kitchen.")
-                house[2][2] = True
+                print("Well done, we got it right, let's go through to the parlour.")
+                house[3][2] = True
                 break
             elif option == "1" or option == "2":
                 print("Nope, that's wrong, we better try again.")
+            elif option == "item":
+                review_keys()
+            elif option == "admin":
+                if admin == True:
+                    ad.admin()
+                else:
+                    print("Alright into the darkness we go.")
+                break
             else:
                 print("Alright into the darkness we go.")
                 break
@@ -244,7 +294,46 @@ Please choose the one you think it is:
 
     
 def level_3():
+    global house, puzzles, items, room, name # Allowing the function to access the global variables
+    room = "parlour"
+    if house[3][2] == False:
+        option = input("""Aargh! There's no light, it's too dark!!! What should you do?:
+0(default) - Return to the living room.
+1 - Wait in the darkness for something to come and kill us""")
+        if option == "1":
+            print("GAME OVER! I could have told you how you died, but it TOO DARK!!!")
+            sys.exit(1)
+        else:
+            print("Phew, let's go back to the kitchen and restart the level!")
+            level_2()
+    else:
+        print(house[3][1])
+        while 0==0:
+            option = input("""I have narrowed down the location of the Key of Revenge to three places
+Please choose the one you think it is:
+0 -  On a chair
+1(Default) - In the fireplace
+2 - In those annoying gaps in the sofa""")
+            if option == "0":
+                print("Yes, you've found it!")
+                items[2][2] = True
+                break
+            elif option == "item":
+                review_keys()
+            else:
+                print("Nope, not here, please try again!")
+        house[4][3] = False
+        print(puzzles[3])
+        
+
+def level_4():
     pass
+
+def test():
+    image = "/workspaces/haunted-house-game/ghosts.png"
+    Window(image)
+
+test()
 
 #except:
  #   print("I apolgize, but there has been an error in the game...")
