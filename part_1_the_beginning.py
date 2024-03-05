@@ -329,11 +329,8 @@ Please choose the one you think it is:
 def level_4():
     pass
 
-def test():
-    image = "/workspaces/haunted-house-game/ghosts.png"
-    Window(image)
-
-test()
+image = "ghosts.png"
+Window(image)
 
 #except:
  #   print("I apolgize, but there has been an error in the game...")
