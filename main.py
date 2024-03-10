@@ -36,6 +36,9 @@ WARNING!!! Not entering an integer will result in the game being terminated, due
         else:
             print("Unfortunately, that level dosen't exist. Please try again!")
 
+def part_2():
+    pass
+
 def part_1():
     global is_admin, room, house, puzzles, items, level_0, level_1, level_2, level_3, level_4
     is_admin = False
@@ -84,7 +87,6 @@ What was the primary motivation behind Napoleon's decision to invade Russia in 1
             ["Key of Freedom", "kitchen", False],
             ["Key of Revenge", "parlour", False],
             ["Key of Deliverance", "attic", False]]
-
 
     def review_keys():
         global room, items
@@ -371,6 +373,8 @@ What was the primary motivation behind Napoleon's decision to invade Russia in 1
     def ghostsarehere():
         window = tk.Tk()
         window.title("Aaarg! Ghosts are here! PANIC!!!!!!!!!!!")
+        click_it = tk.Button(text="Let's get them!!!")
+        click_it.place(x=50, y=50)
         window.mainloop()
 
     ghostsarehere()
