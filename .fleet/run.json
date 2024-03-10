@@ -3,7 +3,7 @@
         {
             "type": "python",
             "name": "Python configuration",
-            "file": "part_1_the_beginning.py",
+            "file": "main.py",
             "arguments": [],
         },
         
