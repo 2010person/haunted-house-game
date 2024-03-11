@@ -1,10 +1,9 @@
-import sys  # Default module so you should have it
-from tkinter import * #Another default module
-import time # Dno't worry this is default too
+from tkinter import * # Another default module, used to create windows
+import time # Don't worry this is default too
 
-try: #The code is wrapped in a massive try-except statement to account for bugs
+try: # The code is wrapped in a massive try-except statement to account for bugs
 
-    window = "" #placeholder for the window variable
+    window = "" # placeholder for the window variable
 
 
     def admin(): #function for admin mode
@@ -149,7 +148,7 @@ try: #The code is wrapped in a massive try-except statement to account for bugs
             if option == "1":
                 print("""GAME OVER!
         I mean, you can't really play without entering the temple!""")
-                sys.exit(1) #Ends the program
+                exit() #Ends the program
             else:
                 print("""
     ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -222,16 +221,17 @@ try: #The code is wrapped in a massive try-except statement to account for bugs
         1 - Wait in the darkness for something to come and kill us""")
                 if option == "1":
                     print("GAME OVER! I could have told you how you died, but it TOO DARK!!!")
-                    sys.exit(1)
+                    exit()
                 else:
                     print("Phew, let's go back to the entrance room and start from there!")
                     level_0()
             else:
                 print(house[1][1])  # Description for the living room
+                print("""AARGH! The room key disintegrated after opening the door, it must have been very old.
+Anyways the message is in a place where his hatred burned.
+Therfore, I have located three possible locations in the living room:""")
                 while 0 == 0:
-                    option = input("""AARGH! The room key disintegrated after opening the door, it must have been very old.
-        Anyways the message is in a place where his hatred burned.
-        Therfore, I have located three possible locations in the living room:
+                    option = input("""
         0(Default) - Sofa
         1 - Fireplace
         2 - Fossilised large cobweb structure?""")
@@ -288,7 +288,7 @@ try: #The code is wrapped in a massive try-except statement to account for bugs
         1 - Wait in the darkness for something to come and kill us""")
                 if option == "1":
                     print("GAME OVER! I could have told you how you died, but it TOO DARK!!!")
-                    sys.exit(1)
+                    exit()
                 else:
                     print("Phew, let's go back to the living room and restart the level!")
                     level_1()
@@ -347,7 +347,7 @@ try: #The code is wrapped in a massive try-except statement to account for bugs
         1 - Wait in the darkness for something to come and kill us""")
                 if option == "1":
                     print("GAME OVER! I could have told you how you died, but it TOO DARK!!!")
-                    sys.exit(1)
+                    exit()
                 else:
                     print("Phew, let's go back to the kitchen and restart the level!")
                     level_2()
@@ -403,7 +403,7 @@ try: #The code is wrapped in a massive try-except statement to account for bugs
         1 - Wait in the darkness for something to come and kill us""")
                 if option == "1":
                     print("GAME OVER! I could have told you how you died, but it TOO DARK!!!")
-                    sys.exit(1)
+                    exit()
                 else:
                     print("Phew, let's go back to the parlour and restart the level!")
                     level_3()
@@ -503,7 +503,7 @@ try: #The code is wrapped in a massive try-except statement to account for bugs
             global window
             window.destroy() #Deystorys the tkinter window
             print("GAME OVER!!! You quit, you lose!")
-            sys.exit(1)
+            exit()
 
         def unamehalloffame():
             global name
@@ -517,22 +517,22 @@ try: #The code is wrapped in a massive try-except statement to account for bugs
                 pass
             print("The big username hall of fame, including you username, below:")
             uname = open("halloffame.txt", "a") #Opens the file in appending mode
-            uname.write(name) #Appends the usernmae into the file
+            uname.write(name + " ") #Appends the username into the file
             uname.close() # Closes the file
             uname = open("halloffame.txt", "r") # Opens the file in reading mode
             print(uname.read())
             print("Well done for getting to the end but....")
             print("GAME OVER!, sorry you lost to Napolean, stay tuned for version 4!")
-            sys.exit(1)
+            exit()
 
         intro()#Calls the introduction function for the start
 
 
     game() # Calls the main game function
 
- except: #This is carried out if there is a bug in the game
+except: #This is carried out if there is a bug in the game
      print("I apolgize, but there has been an error in the game...")
      print("Please report this error to Horror Games People Industries.")
      print("Take a screenshot and tag us on X!")
      print("I am afraid its GAME OVER! Please hold on while we resolve the problem...")
-     sys.exit(1)
+     exit()
