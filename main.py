@@ -497,7 +497,7 @@ Therfore, I have located three possible locations in the living room:""")
                   88   8 8   8 8   8 88 8  8    88  8 88  8    88    88  8 88   8 88   8 88  8  8  88   88  8
                   88eee8 8eee8 8eee8 88 8  8    88  8 88  8 8ee88    88  8 88   8 88   8 88  8ee8  88ee 88ee8
                   """) #ASCII art
-            unamehalloffame()
+           # unamehalloffame()
 
         def ghost_quitters():
             global window
@@ -505,30 +505,56 @@ Therfore, I have located three possible locations in the living room:""")
             print("GAME OVER!!! You quit, you lose!")
             exit()
 
-        def unamehalloffame():
-            global name
-            print("Your username is being added to the username hall of fame for getting to the end.")
-            print("Sorry, but you had to lose, so nobdy could beat this game.")
-            print("The ghosts were invincible, or where they, version 4 landing soon!")
-            if name == "omegabetaalphagammaraY":
-                print("Dear admin, please customize your username before it is put onto the hall of fame.")
-                name = input("Customize your username here, admin.")
-            else:
-                pass
-            print("The big username hall of fame, including you username, below:")
-            uname = open("halloffame.txt", "a") #Opens the file in appending mode
-            uname.write(name + " ") #Appends the username into the file
-            uname.close() # Closes the file
-            uname = open("halloffame.txt", "r") # Opens the file in reading mode
-            print(uname.read())
-            print("Well done for getting to the end but....")
-            print("GAME OVER!, sorry you lost to Napolean, stay tuned for version 4!")
-            exit()
+        #def unamehalloffame():
+        #    global name
+         #   print("Your username is being added to the username hall of fame for getting to the end.")
+          #  print("Sorry, but you had to lose, so nobdy could beat this game.")
+           # print("The ghosts were invincible, or where they, version 4 landing soon!")
+            #if name == "omegabetaalphagammaraY":
+             #   print("Dear admin, please customize your username before it is put onto the hall of fame.")
+              #  name = input("Customize your username here, admin.")
+            #else:
+             #   pass
+    #        print("The big username hall of fame, including you username, below:")
+     #       uname = open("halloffame.txt", "a") #Opens the file in appending mode
+      #      uname.write(name + " ") #Appends the username into the file
+       #     uname.close() # Closes the file
+        #    uname = open("halloffame.txt", "r") # Opens the file in reading mode
+         #   print(uname.read())
+          #  print("Well done for getting to the end but....")
+           # print("GAME OVER!, sorry you lost to Napolean, stay tuned for version 4!")
+            #exit()
 
         intro()#Calls the introduction function for the start
 
+    def part_2():
+        print("But wait don't be glum, all hope is not lost....., the old rope is crumbling!")
+        print("Yes, move a little to the side and there we are.")
 
-    game() # Calls the main game function
+        def you_dare_i_need_your_blood():
+            global window
+            window = Tk() #Defining the tkinter window
+            window.geometry("800x200") #Setting its size
+            window.title("OOPS!!!") #Setting the title
+            label = Label(window, text="He's talkin to us Emperor Napolean.", font=("Impact", 32)) #Creating a text label and buttons to go on it
+            label.pack()
+            second_text = Label(window, text="""Huh, so you mortals thought you could escape, and risk my wrath, that's dumb.
+But nonetheless, I am unable to take over the world like this, and need to awaken my friend Hades, King of the Underworld.
+Though he was sent into a deep sleep by Zeus and Posiedon, therfore I need mortal blood and ancient magic to awaken him.""", font=("Arial", 10))
+            second_text.pack()
+            click_it = Button(text="So now, my blood is gonna be used to awaken Death?", command=window.destroy) #Deystroys the tkinter window if this button is selected
+            click_it.place(x=230, y=120)
+            window.mainloop()
+            hi_hades()
+
+        def hi_hades():
+            pass
+
+        you_dare_i_need_your_blood()
+
+
+    #game() # Calls the main game function
+    part_2()
 
 except: #This is carried out if there is a bug in the game
      print("I apolgize, but there has been an error in the game...")
