@@ -508,7 +508,7 @@ Therfore, I have located three possible locations in the living room:""")
         #def unamehalloffame():
         #    global name
          #   print("Your username is being added to the username hall of fame for getting to the end.")
-          #  print("Sorry, but you had to lose, so nobdy could beat this game.")
+          #  print("Sorry, but you had to lose, so nobody could beat this game.")
            # print("The ghosts were invincible, or where they, version 4 landing soon!")
             #if name == "omegabetaalphagammaraY":
              #   print("Dear admin, please customize your username before it is put onto the hall of fame.")
@@ -548,10 +548,32 @@ Though he was sent into a deep sleep by Zeus and Posiedon, therfore I need morta
             hi_hades()
 
         def hi_hades():
+            global window
+            print("WOAH! That syringe is definitely not hygenic, ughhhhhhhh, your blood is all over me and oh, its combining with the ancient magical key!")
+            print("Now they're chanting: Veni Hades, is this a game or trick! And oh....")
+            time.sleep(2)
+            window = Tk() #Defining the tkinter window
+            window.geometry("800x200") #Setting its size
+            window.title("Death is here. We are the dead.") #Setting the title
+            label = Label(window, text="Oh, my god!!! Hades himself just exited the magical portal!!", font=("Segoe UI", 10)) #Creating a text label and buttons to go on it
+            label.pack()
+            second_label = Label(window, text="His sharp breath seems to be sucking in my soul, claiming it as property of the Underworld!!!", font=("Segoe UI", 32)) #Creating a text label and buttons to go on it
+            second_label.pack()
+            click_it = Button(text="So, Hades, let's fight shall we?", command=window.destroy) #Deystroys the tkinter window if this button is selected
+            click_it.place(x=230, y=120)
+            dont_click_it = Button(text="Right I am running through that portal into the Underworld, at least I might be able to escape! HELP!!!", command=hades_quitters) #Deystroys the tkinter window if this button is selected
+            dont_click_it.place(x=230, y=120)
+            window.mainloop()
+            the_final_stand_to_win_or_die()
+
+        def hades_quitters():
             pass
 
-        you_dare_i_need_your_blood()
+        def the_final_stand_to_win_or_die():
+            pass
 
+        #you_dare_i_need_your_blood()
+        hi_hades()
 
     #game() # Calls the main game function
     part_2()
