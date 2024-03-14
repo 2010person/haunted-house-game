@@ -12,7 +12,7 @@ try: # The code is wrapped in a massive try-except statement to account for bugs
         print("At every puzzle for light in part 1 typing 'admin' will allow you to access admin mode.")
         is_admin = True
         while 0 == 0:
-            ad_level = int(input("""Which level do you wish to skip to (the doors and torches will be unlocked for you)?
+            ad_level = int(input("""Which level in part 1 do you wish to skip to (the doors and torches will be unlocked for you)?
     WARNING!!! Not entering an integer will result in the game being terminated, due to an error."""))
             if ad_level == 0 or ad_level == 1 or ad_level == 2 or ad_level == 3 or ad_level == 4: # Makes sure that it is an actual level
                 print("Goodbye, admin, off to Level", ad_level, "you go!")
@@ -497,7 +497,7 @@ Therfore, I have located three possible locations in the living room:""")
                   88   8 8   8 8   8 88 8  8    88  8 88  8    88    88  8 88   8 88   8 88  8  8  88   88  8
                   88eee8 8eee8 8eee8 88 8  8    88  8 88  8 8ee88    88  8 88   8 88   8 88  8ee8  88ee 88ee8
                   """) #ASCII art
-            unamehalloffame()
+            part_2()
 
         def ghost_quitters():
             global window
@@ -505,28 +505,162 @@ Therfore, I have located three possible locations in the living room:""")
             print("GAME OVER!!! You quit, you lose!")
             exit()
 
+        intro()#Calls the introduction function for the start
+
+    def part_2():
+        global name
+        print("But wait don't be glum, all hope is not lost....., the old rope is crumbling!")
+        print("Yes, move a little to the side and there we are.")
+
+        def you_dare_i_need_your_blood():
+            global window
+            window = Tk() #Defining the tkinter window
+            window.geometry("800x200") #Setting its size
+            window.title("OOPS!!!") #Setting the title
+            label = Label(window, text="He's talkin to us Emperor Napolean.", font=("Impact", 32)) #Creating a text label and buttons to go on it
+            label.pack()
+            second_text = Label(window, text="""Huh, so you mortals thought you could escape, and risk my wrath, that's dumb.
+But nonetheless, I am unable to take over the world like this, and need to awaken my friend Hades, King of the Underworld.
+Though he was sent into a deep sleep by Zeus and Posiedon, therfore I need mortal blood and ancient magic to awaken him.""", font=("Arial", 10))
+            second_text.pack()
+            click_it = Button(text="So now, my blood is gonna be used to awaken Death?", command=window.destroy) #Deystroys the tkinter window if this button is selected
+            click_it.place(x=230, y=120)
+            window.mainloop()
+            hi_hades()
+
+        def hi_hades():
+            global window
+            print("WOAH! That syringe is definitely not hygenic, ughhhhhhhh, your blood is all over me and oh, its combining with the ancient magical key!")
+            print("Now they're chanting: Veni Hades, is this a game or trick! And oh....")
+            time.sleep(2)
+            window = Tk() #Defining the tkinter window
+            window.geometry("600x120") #Setting its size
+            window.title("Death is here. We are the dead.") #Setting the title
+            label = Label(window, text="Oh, my god!!! Hades himself just exited the magical portal!!", font=("Impact", 15)) #Creating a text label and buttons to go on it
+            label.pack()
+            second_label = Label(window, text="His sharp breath seems to be sucking in my soul, claiming it as property of the Underworld!!!", font=("Segoe UI", 10)) #Creating a text label and buttons to go on it
+            second_label.pack()
+            click_it = Button(text="So, Hades, let's fight shall we?", command=window.destroy) #Deystroys the tkinter window if this button is selected
+            click_it.place(x=230, y=120)
+            click_it.pack()
+            dont_click_it = Button(text="Right I am running through that portal into the Underworld, at least I might be able to escape! HELP!!!", command=hades_quitters) #Deystroys the tkinter window if this button is selected
+            dont_click_it.place(x=230, y=120)
+            dont_click_it.pack()
+            window.mainloop()
+            the_final_stand_to_win_or_die()
+
+        def hades_quitters():
+            global window
+            window.destroy() #Deystorys the tkinter window
+            print("AARGH! Now we are dead, because we were ripped to shreds by the portal. At least our souls don't have far to travel.")
+            print("Well, you brought this upon yourself. GAME OVER!!!")
+            exit()
+
+        def the_final_stand_to_win_or_die():
+            print("And, entire armies of skeletons are now rising out of the earth.")
+            print("And wait, French legionnaries, genereals Bertrand and Monotholon, they all look possessed and strong.")
+            print("""Napolean is saying:
+'Aha, your mortal eyes aren't missin' any details, eh?
+This plan is centuries in the making I have revived my old army.
+And I have wiped all their memories, and possessed them they are only loyal to me and Hades.
+Also, they are ghostals, they have the powers of a ghost, like you can't physically injure them, can't die, control wind e.t.c.
+And the best of mortal powers, they can easily torture and dissect you without much difficulty.
+Look I am becoming a ghostal too, like it.
+With this I can takeover the world and then Olympus, nothing will stop me and Hades.
+You have no army whatsoever!'""")
+            print("""Suddenly a voice booms, 'I WOULDN'T BE SO SURE ABOUT THAT!'
+The sky parts and the rain forms.
+The armies of Zeus and Posiedon led by the brothers themselves are here to lend their support.
+Hades screams, and the skeltal army engage in a war with the cyclops and storm spirit armies.""")
+            print("While he is distracted, we must take down this self-proclaimed emperor.")
+            option = input("""Let's select our next move:
+0(Default) - Let's get the guns load and fire!
+1 - Chuck a bottle of water at the all-powerful emperor
+2 - Call the police, Napolean is engaging in some very illegal activities
+3 - Scream for help, hopefully someone would here it.""")
+            if option == "1":
+                victory_is_near()
+            elif option == "2":
+                print("""Aaah! Life dosen't get better than being airlifted away after calling 999, and being in a heated police car.
+Returning to the battle with the entire police force fully equipped with guns.
+Oh, there is a single ghostral in the way, we can take him though.
+Uh oh, he screams and...
+GAME OVER! You and the entire police convoy were blown to the other side of the county by the single ghostral, and you died immediately on impact.""")
+                exit()
+            elif option == "3":
+                print("""Well it seems like a ghostral heard you because...
+GAME OVER! A ton of burning arrows were thrown into your mouth, and you died from the injuries.""")
+                exit()
+            else:
+                print("Well, they went right through Napolean and you seemed to have attracted his attention.")
+                victory_is_still_possible()
+
+        def victory_is_still_possible():
+            print("Oh dear, he's coming over and he is similing.")
+            print("""And he is saying:
+'Well well well, you tried to attack the emperor of the ghostral, with a puny gun.
+Dumb move. Now-'""")
+            print("""Genereal Monotholon come up and says to Napolean:
+'Your Imperial Majesty, Lord Hades has said that he will be able to upgrade all the ghostrals to have water-proof abilities, in 30 minutes.
+Once, he is able to perform the necesssary rituals using his powers.'""")
+            print("""Napolean replies:
+'You, you fool, begone, you are dismissed from my army in dishonour.
+You gave away our only weakness.'
+Napoleon waved his hand at Monotholon, who disintegrated.""")
+            option = input("""What should we do now?
+0(Default) - Let Napolean continue after that rude interuption.
+1 - Throw the water bottle at Napoleon""")
+            if option == "1":
+                victory_is_near()
+            else:
+                print("""Napolean continues:
+'As I was gonna say, I'm conducting an experiment,
+I want to see whether I can implant mortal organs into ghostrals.
+So I need yours. Bye!'
+GAME OVER! Napolean killed you with his spear, to extract your organs.""")
+                exit()
+
+        def victory_is_near():
+            print("""The water bottle smashes, and the water starts fizzling, making Napolean vulnerable.
+Nows the chance.
+And, we got him!
+Oh, actually the local, old police inspector managed to finish him off first. Now we don't get any credit.""")
+            victory()
+
+        def victory():
+            global window
+            window = Tk() #Defining the tkinter window
+            window.geometry("400x150") #Setting its size
+            window.title("VICTORY!!!") #Setting the title
+            label = Label(window, text="Napolean's disintegrated.", font=("Impact", 15)) #Creating a text label and buttons to go on it
+            label.pack()
+            second_label = Label(window, text="Hades has been surrounded and imprisoned by his own brothers", font=("Segoe UI", 10)) #Creating a text label and buttons to go on it
+            second_label.pack()
+            click_it = Button(text="So, let's celebrate!", command=window.destroy) #Deystroys the tkinter window if this button is selected
+            click_it.place(x=160, y=60)
+            window.mainloop()
+            unamehalloffame()
+
         def unamehalloffame():
             global name
             print("Your username is being added to the username hall of fame for getting to the end.")
-            print("Sorry, but you had to lose, so nobdy could beat this game.")
-            print("The ghosts were invincible, or where they, version 4 landing soon!")
             if name == "omegabetaalphagammaraY":
                 print("Dear admin, please customize your username before it is put onto the hall of fame.")
                 name = input("Customize your username here, admin.")
             else:
-                pass
+                 pass
             print("The big username hall of fame, including you username, below:")
             uname = open("halloffame.txt", "a") #Opens the file in appending mode
             uname.write(name + " ") #Appends the username into the file
             uname.close() # Closes the file
             uname = open("halloffame.txt", "r") # Opens the file in reading mode
             print(uname.read())
-            print("Well done for getting to the end but....")
-            print("GAME OVER!, sorry you lost to Napolean, stay tuned for version 4!")
+            print("Well done for getting to the end!")
+            print("GAME OVER!, well done for winning")
+            print("Horror Games Industries hopes you enjoyed!")
             exit()
 
-        intro()#Calls the introduction function for the start
-
+        you_dare_i_need_your_blood()
 
     game() # Calls the main game function
 
