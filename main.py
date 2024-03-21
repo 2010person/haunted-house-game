@@ -1,5 +1,5 @@
 from tkinter import * # Another default module, used to create windows
-import time # Don't worry this is default too
+from datetime import datetime as dt # Default module too, used to get the date and time 
 
 try: # The code is wrapped in a massive try-except statement to account for bugs
 
@@ -133,6 +133,9 @@ try: # The code is wrapped in a massive try-except statement to account for bugs
             name = input("Please enter your Horror Games People ID username")
             if name == "omegabetaalphagammaraY":  # Secret admin code, in case you need to skip levels
                 admin()
+            elif name.isalpha() == False:
+                print("Sorry, you are not permitted to have a username without any letters, let's try again. Please only enter letters.")
+                intro()
             else:
                 pass
             print("This game is presented by the Horror Games People Industries!")
@@ -424,7 +427,6 @@ Therfore, I have located three possible locations in the living room:""")
                     else:
                         print("Nope, not here, please try again!")
                 print("Wait, what something just came out of the wall...")
-                time.sleep(2)
                 ghostsarehere()
 
         def ghostsarehere():
@@ -532,7 +534,6 @@ Though he was sent into a deep sleep by Zeus and Posiedon, therfore I need morta
             global window
             print("WOAH! That syringe is definitely not hygenic, ughhhhhhhh, your blood is all over me and oh, its combining with the ancient magical key!")
             print("Now they're chanting: Veni Hades, is this a game or trick! And oh....")
-            time.sleep(2)
             window = Tk() #Defining the tkinter window
             window.geometry("600x120") #Setting its size
             window.title("Death is here. We are the dead.") #Setting the title
@@ -651,7 +652,9 @@ Oh, actually the local, old police inspector managed to finish him off first. No
                  pass
             print("The big username hall of fame, including you username, below:")
             uname = open("halloffame.txt", "a") #Opens the file in appending mode
-            uname.write(name + " ") #Appends the username into the file
+            time = dt.now()
+            time = str(time)
+            uname.write(name + " on " + time + "\n") #Appends the username into the file
             uname.close() # Closes the file
             uname = open("halloffame.txt", "r") # Opens the file in reading mode
             print(uname.read())
@@ -664,9 +667,14 @@ Oh, actually the local, old police inspector managed to finish him off first. No
 
     game() # Calls the main game function
 
-except: #This is carried out if there is a bug in the game
+except ModuleNotFoundError:
+    print("Uh oh, unfortunately you haven't got the Python Standard Library of Modules, properly configured.")
+    print("I am afraid, therfore its GAME OVER.")
+
+except Exception as error: #This is carried out if there is a bug in the game
      print("I apolgize, but there has been an error in the game...")
      print("Please report this error to Horror Games People Industries.")
      print("Take a screenshot and tag us on X!")
      print("I am afraid its GAME OVER! Please hold on while we resolve the problem...")
+     print(error)
      exit()
