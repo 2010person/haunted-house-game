@@ -424,7 +424,6 @@ Therfore, I have located three possible locations in the living room:""")
                     else:
                         print("Nope, not here, please try again!")
                 print("Wait, what something just came out of the wall...")
-                time.sleep(2)
                 ghostsarehere()
 
         def ghostsarehere():
@@ -532,7 +531,6 @@ Though he was sent into a deep sleep by Zeus and Posiedon, therfore I need morta
             global window
             print("WOAH! That syringe is definitely not hygenic, ughhhhhhhh, your blood is all over me and oh, its combining with the ancient magical key!")
             print("Now they're chanting: Veni Hades, is this a game or trick! And oh....")
-            time.sleep(2)
             window = Tk() #Defining the tkinter window
             window.geometry("600x120") #Setting its size
             window.title("Death is here. We are the dead.") #Setting the title
@@ -663,6 +661,10 @@ Oh, actually the local, old police inspector managed to finish him off first. No
         you_dare_i_need_your_blood()
 
     game() # Calls the main game function
+
+except ModuleNotFoundError:
+    print("Uh oh, unfortunately you haven't got the Python Standard Library of Modules, properly configured.")
+    print("I am afraid, therfore its GAME OVER.")
 
 except: #This is carried out if there is a bug in the game
      print("I apolgize, but there has been an error in the game...")
