@@ -1,4 +1,5 @@
 from tkinter import * # Another default module, used to create windows
+from datetime import datetime as dt # Default module too, used to get the date and time 
 
 try: # The code is wrapped in a massive try-except statement to account for bugs
 
@@ -132,6 +133,9 @@ try: # The code is wrapped in a massive try-except statement to account for bugs
             name = input("Please enter your Horror Games People ID username")
             if name == "omegabetaalphagammaraY":  # Secret admin code, in case you need to skip levels
                 admin()
+            elif name.isalpha() == False:
+                print("Sorry, you are not permitted to have a username without any letters, let's try again. Please only enter letters.")
+                intro()
             else:
                 pass
             print("This game is presented by the Horror Games People Industries!")
@@ -648,7 +652,9 @@ Oh, actually the local, old police inspector managed to finish him off first. No
                  pass
             print("The big username hall of fame, including you username, below:")
             uname = open("halloffame.txt", "a") #Opens the file in appending mode
-            uname.write(name + " ") #Appends the username into the file
+            time = dt.now()
+            time = str(time)
+            uname.write(name + " on " + time + "\n") #Appends the username into the file
             uname.close() # Closes the file
             uname = open("halloffame.txt", "r") # Opens the file in reading mode
             print(uname.read())
@@ -665,9 +671,10 @@ except ModuleNotFoundError:
     print("Uh oh, unfortunately you haven't got the Python Standard Library of Modules, properly configured.")
     print("I am afraid, therfore its GAME OVER.")
 
-except: #This is carried out if there is a bug in the game
+except Exception as error: #This is carried out if there is a bug in the game
      print("I apolgize, but there has been an error in the game...")
      print("Please report this error to Horror Games People Industries.")
      print("Take a screenshot and tag us on X!")
      print("I am afraid its GAME OVER! Please hold on while we resolve the problem...")
+     print(error)
      exit()
