@@ -1,5 +1,4 @@
 from tkinter import * # Another default module, used to create windows
-import time # Don't worry this is default too
 
 try: # The code is wrapped in a massive try-except statement to account for bugs
 
